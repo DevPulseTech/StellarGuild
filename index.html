@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StellarGuild | The Contributor Network Powering Stellar</title>
+    <meta name="description" content="StellarGuild is the coordination, education, and talent matching network for the Stellar and Soroban ecosystems.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Space Nebula Background Effects -->
+    <div class="nebula-bg"></div>
+    <div class="stars"></div>
+    <div class="glow-sphere orange"></div>
+    <div class="glow-sphere blue"></div>
+    <div class="glow-sphere purple"></div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 100 100" class="logo-svg">
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#3b82f6" />
+                                <stop offset="50%" stop-color="#8b5cf6" />
+                                <stop offset="100%" stop-color="#06b6d4" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="url(#logoGrad)" stroke-width="6" />
+                        <polygon points="50,20 65,45 80,45 60,60 70,85 50,70 30,85 40,60 20,45 35,45" fill="url(#logoGrad)" />
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>StellarGuild</h1>
+                    <span>SDF Contributor Layer</span>
+                </div>
+            </div>
+
+            <!-- Profile Overview Widget in Sidebar -->
+            <div class="sidebar-profile-card">
+                <div class="avatar-container">
+                    <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=knights&backgroundColor=0f172a" alt="User Avatar" class="profile-avatar" id="user-profile-avatar">
+                    <span class="online-indicator"></span>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-username" id="sidebar-username">SDF_Builder_X</h3>
+                    <div class="profile-level-badge">Level 3 Contributor</div>
+                </div>
+                <div class="xp-bar-container">
+                    <div class="xp-labels">
+                        <span>XP: 750 / 1000</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="xp-bar">
+                        <div class="xp-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="reputation-badges-row">
+                    <span class="mini-badge" title="Rust Dev Badge">🦀</span>
+                    <span class="mini-badge" title="Soroban Explorer">✨</span>
+                    <span class="mini-badge" title="Wave Program Graduate">🌊</span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <button class="nav-btn active" data-target="dashboard" id="btn-nav-dashboard">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+                            <span>Dashboard</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-btn" data-target="opportunities" id="btn-nav-opportunities">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                            <span>Opportunities</span>
+                            <span class="nav-badge alert">New</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-btn" data-target="matchmaker" id="btn-nav-matchmaker">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/></svg>
+                            <span>AI Matchmaker</span>
+                            <span class="nav-badge glow">AI</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-btn" data-target="quests" id="btn-nav-quests">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                            <span>Soroban Quests</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-btn" data-target="assistants" id="btn-nav-assistants">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            <span>AI Assistants</span>
+                            <span class="nav-badge beta">Hot</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-btn" data-target="directory" id="btn-nav-directory">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            <span>Ecosystem Talent</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Sidebar Footer / Settings -->
+            <div class="sidebar-footer">
+                <div class="stellar-price">
+                    <svg viewBox="0 0 24 24" class="stellar-coin-icon"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5"/></svg>
+                    <span>XLM: <strong>$0.142</strong></span>
+                    <span class="percent-up">+4.2%</span>
+                </div>
+                <div class="connection-status">
+                    <span class="status-dot"></span>
+                    <span>Stellar Mainnet</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Workspace Area -->
+        <main class="main-content">
+            <!-- Top Dashboard Bar -->
+            <header class="top-header">
+                <div class="header-search">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" placeholder="Search bounties, contributors, smart contracts..." id="global-search-input">
+                </div>
+                <div class="header-actions">
+                    <!-- Notifications Button -->
+                    <button class="icon-action-btn" title="View Notifications" id="btn-notifications">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                        <span class="badge-count">3</span>
+                    </button>
+                    <!-- SDF Wave Program Integration Quick Action -->
+                    <div class="wave-program-banner" id="wave-banner-action">
+                        <span class="pulse-ring"></span>
+                        <div class="banner-text">
+                            <strong>Wave 18 Applications Open</strong>
+                            <span>SDF Grants up to $100k XLM</span>
+                        </div>
+                        <button class="wave-apply-btn" id="btn-apply-wave">Apply AI Assistant</button>
+                    </div>
+                    <!-- Wallet Connect button -->
+                    <button class="wallet-btn" id="btn-wallet-connect">
+                        <span class="wallet-icon-holder">🔒</span>
+                        <span id="wallet-text">Connect Freighter</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Scrollable Page Frame -->
+            <div class="scroll-pane">
+                
+                <!-- ==================== DASHBOARD TAB ==================== -->
+                <section class="tab-content active" id="dashboard-section">
+                    <div class="dashboard-hero">
+                        <div class="hero-left">
+                            <span class="tagline">STELLARGUIDE COMMAND CENTER</span>
+                            <h2>Build the Future of Stellar Finance</h2>
+                            <p>Contribute to Soroban smart contracts, claim open-source bounties, and get matched with Stellar Development Foundation grants.</p>
+                            <div class="hero-actions">
+                                <button class="action-btn primary ripple" id="btn-hero-match">Find Bounties Now</button>
+                                <button class="action-btn outline" id="btn-hero-learn">Start Soroban Quests</button>
+                            </div>
+                        </div>
+                        <div class="hero-right">
+                            <!-- Premium stats visualization -->
+                            <div class="dashboard-stats-grid">
+                                <div class="stat-card">
+                                    <span class="stat-label">Total XP</span>
+                                    <span class="stat-value text-glow" id="dashboard-xp-val">750 XP</span>
+                                    <span class="stat-change text-cyan">Level 3</span>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="stat-label">Completed Quests</span>
+                                    <span class="stat-value text-glow">4 / 6</span>
+                                    <span class="stat-change text-emerald">2 active</span>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="stat-label">Claimed XLM Bounties</span>
+                                    <span class="stat-value text-glow" id="dashboard-xlm-val">420 XLM</span>
+                                    <span class="stat-change text-emerald">+$150 value</span>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="stat-label">Ecosystem Rank</span>
+                                    <span class="stat-value text-glow">#42</span>
+                                    <span class="stat-change text-purple">Top 5%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Sub-Grid (GitHub Commit and AI feed) -->
+                    <div class="grid-layout cols-2">
+                        <!-- Left: Proof of Contribution Activity -->
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h3>Proof of Contribution Activity</h3>
+                                <span class="header-link text-cyan">Verified via GitHub</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-desc">Your daily contributions to active Stellar repositories. Keep commits green to build ecosystem trust scores!</p>
+                                <!-- Interactive Calendar Grid Mockup -->
+                                <div class="contribution-graph">
+                                    <div class="months">
+                                        <span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span>
+                                    </div>
+                                    <div class="graph-grid" id="github-contrib-grid">
+                                        <!-- Will be populated dynamically via JavaScript for absolute reliability and interaction -->
+                                    </div>
+                                    <div class="graph-legend">
+                                        <span>Less</span>
+                                        <span class="legend-cell level-0"></span>
+                                        <span class="legend-cell level-1"></span>
+                                        <span class="legend-cell level-2"></span>
+                                        <span class="legend-cell level-3"></span>
+                                        <span class="legend-cell level-4"></span>
+                                        <span>More</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="reputation-breakdown">
+                                    <h4>Developer Trust Index: <strong>89 / 100</strong></h4>
+                                    <div class="progress-bar-small"><div class="fill" style="width: 89%; background: linear-gradient(90deg, #8b5cf6, #06b6d4);"></div></div>
+                                    <div class="grid-layout cols-3 mini-stats">
+                                        <div><strong>12</strong><span>Merged PRs</span></div>
+                                        <div><strong>100%</strong><span>Bounty Success Rate</span></div>
+                                        <div><strong>2 weeks</strong><span>Retention Time</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: AI Ecosystem Live Feed -->
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h3>AI Ecosystem Live Feed</h3>
+                                <span class="badge live-badge">Live Updates</span>
+                            </div>
+                            <div class="card-body feed-box scrollable-feed" id="dashboard-news-feed">
+                                <!-- Populated dynamically by app.js, allowing beautiful structured updates -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommended Opportunities Section -->
+                    <div class="dashboard-section-header">
+                        <h3>Recommended for You</h3>
+                        <p>Based on your Rust & React skills, these projects are looking for contributors.</p>
+                    </div>
+                    <div class="opportunity-recommendations" id="dashboard-recommendations">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </section>
+
+                <!-- ==================== OPPORTUNITIES TAB ==================== -->
+                <section class="tab-content" id="opportunities-section">
+                    <div class="tab-header-row">
+                        <div>
+                            <h2>Stellar Opportunity Hub</h2>
+                            <p>Browse open-source bounties, paid sprints, SDF Wave grants, and active hiring needs.</p>
+                        </div>
+                        <div class="filter-controls">
+                            <div class="search-pill">
+                                <input type="text" id="opp-search" placeholder="Filter by skills or keyword...">
+                                <span class="search-pill-icon">🔍</span>
+                            </div>
+                            <div class="category-selectors" id="opp-category-selectors">
+                                <button class="filter-tab-btn active" data-type="all">All</button>
+                                <button class="filter-tab-btn" data-type="bounty">Bounties</button>
+                                <button class="filter-tab-btn" data-type="grant">Grants</button>
+                                <button class="filter-tab-btn" data-type="hackathon">Hackathons</button>
+                                <button class="filter-tab-btn" data-type="job">Jobs & Bounties</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Opportunities Grid -->
+                    <div class="grid-layout cols-3" id="opportunities-grid">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </section>
+
+                <!-- ==================== AI MATCHMAKER TAB ==================== -->
+                <section class="tab-content" id="matchmaker-section">
+                    <div class="tab-header-row">
+                        <div>
+                            <h2>AI Contributor Matchmaker</h2>
+                            <p>Let StellarGuild AI scan your expertise and discover the absolute best matches inside the entire Stellar ecosystem.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid-layout cols-5-3">
+                        <!-- Left Panel: Skill Customizer -->
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h3>Configure Matchmaker Parameters</h3>
+                                <button class="action-btn text-cyan" id="btn-matchmaker-sync">Sync from GitHub Profile</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Select Core Languages & Tech Stacks</label>
+                                    <div class="skills-tag-selector" id="matchmaker-skills-list">
+                                        <button class="skill-tag-toggle active" data-skill="Rust">🦀 Rust</button>
+                                        <button class="skill-tag-toggle active" data-skill="Soroban">✨ Soroban Contracts</button>
+                                        <button class="skill-tag-toggle active" data-skill="React">⚛️ React / Frontend</button>
+                                        <button class="skill-tag-toggle" data-skill="Node.js">🟢 Node.js</button>
+                                        <button class="skill-tag-toggle" data-skill="Go">🐹 Go SDK</button>
+                                        <button class="skill-tag-toggle" data-skill="Technical Writing">📝 Technical Writing</button>
+                                        <button class="skill-tag-toggle" data-skill="UI Design">🎨 UI/UX Design</button>
+                                        <button class="skill-tag-toggle" data-skill="Stellar SDK">🌌 Stellar Ledger SDK</button>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Opportunity Type Preference</label>
+                                    <div class="checkbox-group">
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" checked id="pref-bounty">
+                                            <span>Bounties & Micro-tasks (Fast payout)</span>
+                                        </label>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" checked id="pref-grant">
+                                            <span>SDF Waves Grants (Large scale funding)</span>
+                                        </label>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" checked id="pref-hackathon">
+                                            <span>Hackathons & Sprints (Team formation)</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Estimated Availability (Hours/Week)</label>
+                                    <div class="range-slider-container">
+                                        <input type="range" min="2" max="40" value="15" class="custom-range" id="matchmaker-hours">
+                                        <div class="range-labels">
+                                            <span>2 hrs/wk</span>
+                                            <span class="range-bubble" id="match-hours-bubble">15 hrs/week</span>
+                                            <span>40 hrs/wk</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Describe your builder objective (AI embedding matching)</label>
+                                    <textarea id="matchmaker-description" class="custom-textarea" rows="3" placeholder="Example: I want to build cross-chain DeFi primitives using Soroban. I have strong experience writing Rust macros and want to write secure smart contracts for yield farming."></textarea>
+                                </div>
+
+                                <button class="action-btn primary w-full text-center" id="btn-matchmaker-run">
+                                    Calculate AI Ecosystem Matches 🧬
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Right Panel: Matchmaker Results -->
+                        <div class="card glass-card glowing-border">
+                            <div class="card-header">
+                                <h3>AI Matching Ecosystem Matches</h3>
+                                <span class="badge glow-badge">Embedding Computed</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="matching-results-container" id="matchmaker-results">
+                                    <!-- Dynamic matching items loaded by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==================== SOROBAN QUESTS TAB ==================== -->
+                <section class="tab-content" id="quests-section">
+                    <div class="tab-header-row">
+                        <div>
+                            <h2>Soroban Interactive Developer Quests</h2>
+                            <p>Master smart contract development on the Stellar ledger. Code inside the web playground, pass tests, and mint reputation badges.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid-layout cols-1-2">
+                        <!-- Left Panel: Quest Lists -->
+                        <div class="quest-navigation">
+                            <!-- Quest 1 -->
+                            <div class="quest-item-card active" data-quest="1">
+                                <div class="quest-meta">
+                                    <span class="quest-badge completed">✓ Passed</span>
+                                    <span class="quest-xp">+100 XP</span>
+                                </div>
+                                <h3>Quest 1: Stellar Ledger & Account Setup</h3>
+                                <p>Initialize keys, handle accounts, and complete payments on the test network.</p>
+                            </div>
+                            <!-- Quest 2 -->
+                            <div class="quest-item-card active-editing" data-quest="2">
+                                <div class="quest-meta">
+                                    <span class="quest-badge ongoing">In Progress</span>
+                                    <span class="quest-xp">+250 XP</span>
+                                </div>
+                                <h3>Quest 2: Writing a Counter Smart Contract</h3>
+                                <p>Learn Soroban storage types, contract states, and execute variable increments.</p>
+                            </div>
+                            <!-- Quest 3 -->
+                            <div class="quest-item-card disabled" data-quest="3">
+                                <div class="quest-meta">
+                                    <span class="quest-badge locked">🔒 Locked</span>
+                                    <span class="quest-xp">+300 XP</span>
+                                </div>
+                                <h3>Quest 3: Creating and Issuing Assets</h3>
+                                <p>Build customized tokens and manage total supply with admin configurations.</p>
+                            </div>
+                            <!-- Quest 4 -->
+                            <div class="quest-item-card disabled" data-quest="4">
+                                <div class="quest-meta">
+                                    <span class="quest-badge locked">🔒 Locked</span>
+                                    <span class="quest-xp">+500 XP</span>
+                                </div>
+                                <h3>Quest 4: Cross-Contract Call Escrow</h3>
+                                <p>Author multi-sig escrows to securely exchange tokens upon receipt of deliverables.</p>
+                            </div>
+                        </div>
+
+                        <!-- Right Panel: Interactive Rust Code Editor Playground -->
+                        <div class="card glass-card coding-playground">
+                            <div class="card-header border-bottom">
+                                <div class="quest-details-header">
+                                    <span class="quest-title-pill">Quest 2 of 6</span>
+                                    <h3>Create a Soroban Counter Smart Contract</h3>
+                                </div>
+                                <div class="editor-buttons">
+                                    <button class="action-btn text-cyan" id="btn-quest-reset">Reset Code</button>
+                                </div>
+                            </div>
+                            <div class="playground-layout">
+                                <!-- Instructions -->
+                                <div class="instructions-pane">
+                                    <h4>Objectives</h4>
+                                    <ol>
+                                        <li>Define a public contract structure labeled <code>CounterContract</code>.</li>
+                                        <li>Store the variable inside the <code>Env::storage</code> system under a key.</li>
+                                        <li>Implement an <code>increment(env: Env) -> u32</code> function that adds 1 and returns the new value.</li>
+                                    </ol>
+                                    <p class="tip">💡 <strong>Tip:</strong> Keep the contract key as a Symbol: <code>Symbol::new(&env, "count")</code>. Read storage using <code>env.storage().instance().get()</code>.</p>
+                                </div>
+
+                                <!-- Code Pane -->
+                                <div class="code-editor-container">
+                                    <div class="editor-tabs">
+                                        <span class="editor-tab active">lib.rs</span>
+                                        <span class="editor-tab">Cargo.toml</span>
+                                    </div>
+                                    <textarea id="code-editor-area" class="code-editor-textarea" spellcheck="false">
+use soroban_sdk::{contract, contractimpl, Env, Symbol};
+
+#[contract]
+pub struct CounterContract;
+
+#[contractimpl]
+impl CounterContract {
+    pub fn increment(env: Env) -> u32 {
+        let key = Symbol::new(&env, "count");
+        
+        // 1. Read existing value from instance storage, default to 0
+        let mut count: u32 = env.storage().instance().get(&key).unwrap_or(0);
+        
+        // 2. TODO: Increment the count value by 1
+        count += 0; // Fix this line!
+        
+        // 3. Write new value to instance storage
+        env.storage().instance().set(&key, &count);
+        
+        // 4. Return new value
+        count
+    }
+}
+                                    </textarea>
+                                </div>
+                            </div>
+
+                            <!-- Terminal & Actions -->
+                            <div class="card-footer terminal-footer">
+                                <div class="terminal-header">
+                                    <span>Console Output (Cargo Compiler)</span>
+                                    <span class="terminal-status" id="term-status">Idle</span>
+                                </div>
+                                <pre class="terminal-body" id="quest-terminal-output">Ready to compile. Press "Run Tests" to execute Soroban contract compilation.</pre>
+                                <div class="terminal-actions">
+                                    <button class="action-btn outline" id="btn-quest-hint">Show Hint</button>
+                                    <button class="action-btn primary glow-btn" id="btn-quest-run">Run Soroban Tests 🧪</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==================== AI ASSISTANTS TAB ==================== -->
+                <section class="tab-content" id="assistants-section">
+                    <div class="tab-header-row">
+                        <div>
+                            <h2>StellarGuild Dual AI Assistants</h2>
+                            <p>Chat with specialized artificial intelligence models fine-tuned on the Stellar codebase, developer documentation, and the Waves grant program.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid-layout cols-2">
+                        <!-- Left Assistant: Ecosystem Intelligence -->
+                        <div class="card glass-card chat-assistant-card">
+                            <div class="card-header border-bottom">
+                                <div class="assistant-title-block">
+                                    <span class="assistant-avatar">🤖</span>
+                                    <div>
+                                        <h3>Nova AI: Ecosystem Assistant</h3>
+                                        <span>Trained on Stellar docs, Soroban tutorials, & Github codebases</span>
+                                    </div>
+                                </div>
+                                <span class="pulse-active-chat">Online</span>
+                            </div>
+                            <div class="chat-messages-container" id="ecosystem-chat-box">
+                                <div class="chat-msg bot">
+                                    <div class="msg-avatar">🤖</div>
+                                    <div class="msg-content">
+                                        <p>Hello! I am <strong>Nova</strong>, your Stellar Ecosystem Intelligence assistant. How can I help you find developer opportunities or master Soroban today?</p>
+                                        <div class="quick-prompts">
+                                            <button class="quick-prompt-btn" data-chat="eco" data-text="Show active Soroban bounties">Show active Soroban bounties 🎯</button>
+                                            <button class="quick-prompt-btn" data-chat="eco" data-text="Explain Soroban Storage limits">Explain Soroban Storage limits 🧠</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-input-bar">
+                                <input type="text" placeholder="Ask Nova anything about Stellar..." id="ecosystem-chat-input">
+                                <button class="action-btn primary" id="btn-ecosystem-chat-send">Send</button>
+                            </div>
+                        </div>
+
+                        <!-- Right Assistant: Proposal Optimizer -->
+                        <div class="card glass-card chat-assistant-card">
+                            <div class="card-header border-bottom">
+                                <div class="assistant-title-block">
+                                    <span class="assistant-avatar">📝</span>
+                                    <div>
+                                        <h3>Forge AI: Wave Proposal Optimizer</h3>
+                                        <span>Construct, critique, & optimize SDF Wave grant proposals</span>
+                                    </div>
+                                </div>
+                                <span class="pulse-active-chat yellow">Online</span>
+                            </div>
+                            <div class="chat-messages-container" id="grant-chat-box">
+                                <div class="chat-msg bot">
+                                    <div class="msg-avatar">📝</div>
+                                    <div class="msg-content">
+                                        <p>Welcome! I am <strong>Forge</strong>, an AI agent focused on maximizing your grant success under the Stellar Waves Program. Paste a proposal abstract or click a fast template below to get started!</p>
+                                        <div class="quick-prompts">
+                                            <button class="quick-prompt-btn" data-chat="grant" data-text="Draft proposal: Decentralized Multi-sig Wallet on Soroban">Draft abstract: Soroban Multi-sig Wallet 💼</button>
+                                            <button class="quick-prompt-btn" data-chat="grant" data-text="Critique proposal guidelines for SDF Waves">Critique my grant milestones 📊</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-input-bar">
+                                <input type="text" placeholder="Ask Forge to structure, edit, or critique a proposal..." id="grant-chat-input">
+                                <button class="action-btn primary yellow-glow" id="btn-grant-chat-send">Optimize</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==================== CONTRIBUTOR DIRECTORY TAB ==================== -->
+                <section class="tab-content" id="directory-section">
+                    <div class="tab-header-row">
+                        <div>
+                            <h2>Stellar Contributor Directory</h2>
+                            <p>Discover expert builders, form hackathon squads, or recruit verified professionals for your Stellar projects.</p>
+                        </div>
+                        <div class="directory-actions">
+                            <input type="text" placeholder="Search by name, skill, or GitHub ID..." id="directory-search">
+                            <button class="action-btn primary" id="btn-directory-join">Join Contributor Network</button>
+                        </div>
+                    </div>
+
+                    <!-- Filter badges for Directory -->
+                    <div class="directory-skills-filter" id="directory-filters">
+                        <button class="dir-filter-btn active" data-skill="all">All Talents</button>
+                        <button class="dir-filter-btn" data-skill="Rust">Rust Devs</button>
+                        <button class="dir-filter-btn" data-skill="Soroban">Soroban Masters</button>
+                        <button class="dir-filter-btn" data-skill="React">React Builders</button>
+                        <button class="dir-filter-btn" data-skill="UI/UX">Designers</button>
+                        <button class="dir-filter-btn" data-skill="Writer">Writers</button>
+                    </div>
+
+                    <!-- Talent Grid -->
+                    <div class="grid-layout cols-4" id="directory-grid">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== OPPORTUNITY DELIVERABLE APPLICATION MODAL ==================== -->
+    <div class="modal-overlay" id="opportunity-modal">
+        <div class="modal-card glass-modal">
+            <div class="modal-header">
+                <h3 id="modal-opp-title">Opportunity Details</h3>
+                <button class="btn-close-modal" id="btn-close-modal">×</button>
+            </div>
+            <div class="modal-body" id="modal-opp-body">
+                <!-- Loaded dynamically by app.js based on selected card -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Celebration / Badge Success Pop-up -->
+    <div class="badge-popup-container" id="badge-celebration">
+        <div class="badge-popup-card">
+            <div class="confetti-particles">🎉 🌟 ✨ 🚀 🦀</div>
+            <div class="badge-icon-large" id="celebration-badge-icon">🏆</div>
+            <h3 id="celebration-badge-title">Quest Accomplished!</h3>
+            <p id="celebration-badge-desc">You've successfully solved Quest 2 and minted a new verified skill badge!</p>
+            <div class="celebration-stats">
+                <span>+250 XP Granted</span>
+                <span>Level 4 Unlocked!</span>
+            </div>
+            <button class="action-btn primary w-full text-center" id="btn-celebration-close">Claim & Share Badge</button>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
